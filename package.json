@@ -1,0 +1,11 @@
+{
+  "name": "fakeapi",
+  "version": "0.0.1",
+  "description": "Respond to API requests with rubbish",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karl Denby",
+  "license": "GPL-3.0-or-later"
+}
