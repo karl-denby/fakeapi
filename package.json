@@ -9,6 +9,7 @@
   "author": "Karl Denby",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@sendgrid/mail": "^7.0.1",
     "express": "^4.17.1"
   }
 }
