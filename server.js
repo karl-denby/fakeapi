@@ -1,6 +1,7 @@
 'use strict';
-
+require('dotenv').config();
 const express = require('express');
+
 
 // Constants
 const PORT = 8080;
@@ -25,6 +26,10 @@ app.get('/email', (req, res) => {
   sgMail.send(msg);
   res.send('Check your email')
 })
+
+app.get('/env', (req, res) => {
+  res.send(process.env.APP_NAME);
+});
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
