@@ -36,5 +36,12 @@ app.get('/env', (req, res) => {
   });
 });
 
+app.get('/dayofweek', (req, res) => {
+  let options = { weekday: 'long' };
+  res.send({
+    'day': new Intl.DateTimeFormat('en-US', options).format(new Date())
+  });
+});
+
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
