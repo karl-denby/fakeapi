@@ -2,7 +2,6 @@
 require('dotenv').config();
 const express = require('express');
 
-
 // Constants
 const PORT = 8080;
 const HOST = '0.0.0.0';
@@ -10,7 +9,9 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send({
+    'Hello': 'World'
+  });
 });
 
 app.get('/email', (req, res) => {
@@ -24,11 +25,15 @@ app.get('/email', (req, res) => {
     html: '<strong>triggered from express in Node.js</strong>',
   };
   sgMail.send(msg);
-  res.send('Check your email')
+  res.send({
+    'message': 'Check your email'
+  })
 })
 
 app.get('/env', (req, res) => {
-  res.send(process.env.APP_NAME);
+  res.send({
+    'app_name': process.env.APP_NAME
+  });
 });
 
 app.listen(PORT, HOST);
