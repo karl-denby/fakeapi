@@ -7,7 +7,20 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 // App
+const cors = require('cors')
 const app = express();
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  if ('OPTIONS' == req.method) {
+     res.sendStatus(200);
+   }
+   else {
+     next();
+   }});
+
 app.get('/', (req, res) => {
   res.send({
     'Hello': 'World'
@@ -30,7 +43,7 @@ app.get('/email', (req, res) => {
   })
 })
 
-app.get('/env', (req, res) => {
+app.get('/env', cors(), (req, res) => {
   res.send({
     'app_name': process.env.APP_NAME
   });
